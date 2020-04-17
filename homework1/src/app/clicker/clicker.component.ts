@@ -9,12 +9,12 @@ import { Score } from "../score";
 export class ClickerComponent implements OnInit {
   @Input() userName: string;
 
-  state: string = "start";
-  timer: number = 10;
-  totalClicks: number = 0;
-  gameStart: boolean = false;
-  gameFinished: boolean = false;
-  highscores: object[] = JSON.parse(localStorage.getItem("hightscores")) || [];
+  public state: string = "start";
+  public timer: number = 10;
+  public totalClicks: number = 0;
+  public gameStart: boolean = false;
+  public gameFinished: boolean = false;
+  public highscores: object[] = JSON.parse(localStorage.getItem("hightscores")) || [];
 
   constructor() {}
 

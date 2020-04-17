@@ -6,8 +6,9 @@ import { Component, OnInit } from "@angular/core";
   styleUrls: ["./highscores.component.scss"],
 })
 export class HighscoresComponent implements OnInit {
-  showScores: boolean = false;
-  hightscores: object[];
+  public showScores: boolean = false;
+  public hightscores: object[];
+  
   constructor() {}
 
   ngOnInit(): void {}

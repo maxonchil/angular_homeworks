@@ -6,9 +6,9 @@ import { Component } from "@angular/core";
   styleUrls: ["./app.component.scss"],
 })
 export class AppComponent {
-  title = "Clicker";
-  playMode = false;
-  userName: string;
+  public title = "Clicker";
+  public playMode = false;
+  public userName: string;
 
   getUserName(name: string): void {
     if (!name) {
