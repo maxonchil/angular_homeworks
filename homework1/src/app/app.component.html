@@ -1,0 +1,25 @@
+<main *ngIf="!playMode; else clicker" class="main">
+  <h1 class="main__title">
+    Welcome to <span class="main__span">Clicker game!</span>
+  </h1>
+  <label class="main__label">
+    Plase enter your name:
+    <input
+      #input
+      class="main__input"
+      type="text"
+      placeholder="Maksym"
+      required
+    />
+    <button
+      (click)="getUserName(input.value)"
+      class="main__button button"
+      type="button"
+    >
+      play
+    </button>
+  </label>
+</main>
+<ng-template #clicker
+  ><app-clicker [userName]="userName"></app-clicker
+></ng-template>
