@@ -14,11 +14,41 @@ export class ClickerComponent implements OnInit {
   public totalClicks: number = 0;
   public gameStart: boolean = false;
   public gameFinished: boolean = false;
-  public highscores: object[] = JSON.parse(localStorage.getItem("hightscores")) || [];
+  public highscores: object[] =
+    JSON.parse(localStorage.getItem("hightscores")) || [];
+  public breakpoints: number[] = [30, 60, 90, 120];
+  public controlerSize: any = {
+    start: true,
+    upper: false,
+    advanced: false,
+    pro: false,
+    god: false,
+  };
 
   constructor() {}
 
   ngOnInit(): void {}
+
+  scaleController(): void {
+    switch (this.totalClicks) {
+      case 30:
+        this.controlerSize.default = false;
+        this.controlerSize.upper = true;
+        break;  
+      case 60:
+        this.controlerSize.upper = false;
+        this.controlerSize.advanced = true;
+        break;
+      case 90:
+        this.controlerSize.advanced = false;
+        this.controlerSize.pro = true;
+        break;
+      case 120:
+        this.controlerSize.pro = false;
+        this.controlerSize.god = true;
+        break;
+    }
+  }
 
   launchTimer(): void {
     this.state = "click me";
@@ -54,6 +84,9 @@ export class ClickerComponent implements OnInit {
       this.launchTimer();
     } else {
       this.clickCounter();
+      if (this.breakpoints.includes(this.totalClicks)) {
+        this.scaleController();
+      }
     }
   }
 

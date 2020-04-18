@@ -17,4 +17,12 @@ export class AppComponent {
     this.userName = name;
     this.playMode = true;
   }
+  onKeydownEnter({ target }) {
+    let name = target.value;
+    if (!name) {
+      name = "Anonymous";
+    }
+    this.userName = name;
+    this.playMode = true;
+  }
 }

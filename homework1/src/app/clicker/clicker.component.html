@@ -4,7 +4,11 @@
   </div>
   <div
     [ngClass]="{
-      clicker__controller: true,
+      'clicker__controller--size-default': controlerSize.start,
+      'clicker__controller--size-30': controlerSize.upper,
+      'clicker__controller--size-60': controlerSize.advanced,
+      'clicker__controller--size-90': controlerSize.pro,
+      'clicker__controller--size-120': controlerSize.god,
       'clicker__controller--is-disabled': gameFinished
     }"
     class="clicker__controller"

@@ -10,6 +10,7 @@
       type="text"
       placeholder="Maksym"
       required
+      (keydown.enter)="onKeydownEnter($event)"
     />
     <button
       (click)="getUserName(input.value)"
