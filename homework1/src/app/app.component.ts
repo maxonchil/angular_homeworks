@@ -13,17 +13,12 @@ export class AppComponent {
 
   constructor(private _userService: UserService) {}
   getUserName(name: string): void {
-    if (!name) {
-      name = "Anonymous";
-    }
-    this._userService.setUser(name);
+    let userName = name || "Anonymous";
+    this._userService.setUser(userName);
     this.playMode = true;
   }
   onKeydownEnter(event: KeyboardEvent): void {
-    let name = (<HTMLInputElement>event.target).value;
-    if (!name) {
-      name = "Anonymous";
-    }
+    let name = (<HTMLInputElement>event.target).value || "Anonymous";
     this._userService.setUser(name);
     this.playMode = true;
   }
