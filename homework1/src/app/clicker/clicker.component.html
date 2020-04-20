@@ -1,5 +1,5 @@
 <div class="clicker">
-  <div *ngIf="!gameFinished" class="clicker__total">
+  <div *ngIf="!gameStates.gameFinished" class="clicker__total">
     <span class="clicker__span">Total clicls:</span> {{ totalClicks }}
   </div>
   <div
@@ -9,27 +9,26 @@
       'clicker__controller--size-60': controlerSize.advanced,
       'clicker__controller--size-90': controlerSize.pro,
       'clicker__controller--size-120': controlerSize.god,
-      'clicker__controller--is-disabled': gameFinished
+      'clicker__controller--is-disabled': gameStates.gameFinished
     }"
     class="clicker__controller"
-    (click)="startGame()"
+    (click)="onControllerClick()"
   >
-    <span class="clicker__text">{{ state }}</span>
+    <span class="clicker__text">{{ gameStates.state }}</span>
   </div>
-  <div *ngIf="gameFinished" class="clicker__result">
+  <div *ngIf="gameStates.gameFinished" class="clicker__result">
     <span class="clicker__username">{{ userName }}</span
     >, you clicked
     <span class="clicker__span">{{ totalClicks }} times </span>for 10 second!
   </div>
-  <div *ngIf="gameStart" class="clicker__timer">
+  <div *ngIf="gameStates.gameStart" class="clicker__timer">
     <span class="clicker__span">Times left:</span> {{ timer }} sec.
   </div>
-  <app-highscores *ngIf="gameFinished"></app-highscores>
-  <button
-    class="clicker__button button"
-    *ngIf="gameFinished"
-    (click)="playAgain()"
-  >
-    play again
-  </button>
+  <app-highscores *ngIf="gameStates.gameFinished"></app-highscores>
+  <app-play-again
+    [timer]="timer"
+    [totalClicks]="totalClicks"
+    (updatedTimer)="this.timer = $event"
+    (updatedClicks)="this.totalClicks = $event"
+  ></app-play-again>
 </div>

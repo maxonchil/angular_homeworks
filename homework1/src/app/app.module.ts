@@ -5,12 +5,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ClickerComponent } from './clicker/clicker.component';
 import { HighscoresComponent } from './highscores/highscores.component';
+import { PlayAgainComponent } from './play-again/play-again.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ClickerComponent,
-    HighscoresComponent
+    HighscoresComponent,
+    PlayAgainComponent
   ],
   imports: [
     BrowserModule,

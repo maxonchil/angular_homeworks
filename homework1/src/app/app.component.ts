@@ -1,3 +1,4 @@
+import { UserService } from "./user.service";
 import { Component } from "@angular/core";
 
 @Component({
@@ -10,19 +11,20 @@ export class AppComponent {
   public playMode = false;
   public userName: string;
 
+  constructor(private _userService: UserService) {}
   getUserName(name: string): void {
     if (!name) {
       name = "Anonymous";
     }
-    this.userName = name;
+    this._userService.setUser(name);
     this.playMode = true;
   }
-  onKeydownEnter({ target }) {
-    let name = target.value;
+  onKeydownEnter(event: KeyboardEvent): void {
+    let name = (<HTMLInputElement>event.target).value;
     if (!name) {
       name = "Anonymous";
     }
-    this.userName = name;
+    this._userService.setUser(name);
     this.playMode = true;
   }
 }

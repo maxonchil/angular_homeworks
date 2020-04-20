@@ -1,5 +1,10 @@
-import { Component, OnInit, Input } from "@angular/core";
-import { Score } from "../score";
+import { UserService } from "./../user.service";
+import { GameControlService } from "./../game-control.service";
+import { GameState } from "./../game-state";
+import { ScaleControllerService } from "./../scale-controller.service";
+import { Component, OnInit } from "@angular/core";
+import { ControllerSize } from "../controller-size";
+import { GameStateService } from "../game-state.service";
 
 @Component({
   selector: "app-clicker",
@@ -7,70 +12,30 @@ import { Score } from "../score";
   styleUrls: ["./clicker.component.scss"],
 })
 export class ClickerComponent implements OnInit {
-  @Input() userName: string;
-
-  public state: string = "start";
   public timer: number = 10;
   public totalClicks: number = 0;
-  public gameStart: boolean = false;
-  public gameFinished: boolean = false;
-  public highscores: object[] =
-    JSON.parse(localStorage.getItem("hightscores")) || [];
+  public userName = this._userService.getUser();
   public breakpoints: number[] = [30, 60, 90, 120];
-  public controlerSize: any = {
-    start: true,
-    upper: false,
-    advanced: false,
-    pro: false,
-    god: false,
-  };
+  public controlerSize: ControllerSize = this._scaleControllerService.getBreakPoints();
+  public gameStates: GameState = this._gameStateService.getStates();
 
-  constructor() {}
+  constructor(
+    private _scaleControllerService: ScaleControllerService,
+    private _gameStateService: GameStateService,
+    private _gameControlService: GameControlService,
+    private _userService: UserService
+  ) {}
 
   ngOnInit(): void {}
 
-  scaleController(): void {
-    switch (this.totalClicks) {
-      case 30:
-        this.controlerSize.default = false;
-        this.controlerSize.upper = true;
-        break;  
-      case 60:
-        this.controlerSize.upper = false;
-        this.controlerSize.advanced = true;
-        break;
-      case 90:
-        this.controlerSize.advanced = false;
-        this.controlerSize.pro = true;
-        break;
-      case 120:
-        this.controlerSize.pro = false;
-        this.controlerSize.god = true;
-        break;
-    }
-  }
-
   launchTimer(): void {
-    this.state = "click me";
+    this.gameStates.state = "click me";
     const timerInterval = setInterval(() => this.timer--, 1000);
     setTimeout(() => {
       clearInterval(timerInterval);
-      this.finishGame();
+      this._gameControlService.finishGame(this.totalClicks);
     }, 10000);
-    this.gameStart = true;
-  }
-
-  finishGame(): void {
-    const score: Score = {
-      clicks: this.totalClicks,
-      name: this.userName,
-      date: new Date().toUTCString(),
-    };
-
-    this.gameFinished = true;
-    this.gameStart = false;
-    this.highscores.push(score);
-    localStorage.setItem("hightscores", JSON.stringify(this.highscores));
+    this.gameStates.gameStart = true;
   }
 
   clickCounter(): void {
@@ -79,22 +44,14 @@ export class ClickerComponent implements OnInit {
     }
   }
 
-  startGame(): void {
-    if (!this.gameStart) {
+  onControllerClick(): void {
+    if (!this.gameStates.gameStart) {
       this.launchTimer();
     } else {
       this.clickCounter();
       if (this.breakpoints.includes(this.totalClicks)) {
-        this.scaleController();
+        this._scaleControllerService.setBreakPoints(this.totalClicks);
       }
     }
-  }
-
-  playAgain(): void {
-    this.state = "start";
-    this.timer = 10;
-    this.totalClicks = 0;
-    this.gameStart = false;
-    this.gameFinished = false;
   }
 }
