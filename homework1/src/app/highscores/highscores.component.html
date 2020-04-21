@@ -1,6 +1,6 @@
 <div class="highscores">
   <button class="highscores__button button" (click)="getAllScores()">
-    hightscores
+    highscores
   </button>
   <table *ngIf="showScores" class="highscores__table">
     <tr>
@@ -9,7 +9,7 @@
       <th class="highscores__cell">Score</th>
       <th class="highscores__cell">Date</th>
     </tr>
-    <tr lass="highscores__row" *ngFor="let score of hightscores; index as i">
+    <tr class="highscores__row" *ngFor="let score of highScores; index as i">
       <td class="highscores__cell">{{ i + 1 }}</td>
       <td class="highscores__cell">{{ score.name }}</td>
       <td class="highscores__cell">{{ score.clicks }}</td>
