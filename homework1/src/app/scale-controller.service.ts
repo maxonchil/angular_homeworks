@@ -12,6 +12,7 @@ export class ScaleControllerService {
     pro: false,
     god: false,
   };
+
   constructor() {}
   getBreakPoints(): ControllerSize {
     return this.controlerSize;
@@ -46,4 +47,5 @@ export class ScaleControllerService {
         return this.controlerSize;
     }
   }
+ 
 }

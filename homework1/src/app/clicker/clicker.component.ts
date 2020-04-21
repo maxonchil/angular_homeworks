@@ -54,4 +54,14 @@ export class ClickerComponent implements OnInit {
       }
     }
   }
+  getControllerClasses() {
+    return {
+      "clicker__controller--size-default": this.controlerSize.start,
+      "clicker__controller--size-30": this.controlerSize.upper,
+      "clicker__controller--size-60": this.controlerSize.advanced,
+      "clicker__controller--size-90": this.controlerSize.pro,
+      "clicker__controller--size-120": this.controlerSize.god,
+      "clicker__controller--is-disabled": this.gameStates.gameFinished,
+    };
+  }
 }

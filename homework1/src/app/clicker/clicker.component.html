@@ -3,14 +3,7 @@
     <span class="clicker__span">Total clicls:</span> {{ totalClicks }}
   </div>
   <div
-    [ngClass]="{
-      'clicker__controller--size-default': controlerSize.start,
-      'clicker__controller--size-30': controlerSize.upper,
-      'clicker__controller--size-60': controlerSize.advanced,
-      'clicker__controller--size-90': controlerSize.pro,
-      'clicker__controller--size-120': controlerSize.god,
-      'clicker__controller--is-disabled': gameStates.gameFinished
-    }"
+    [ngClass]="getControllerClasses()"
     class="clicker__controller"
     (click)="onControllerClick()"
   >
