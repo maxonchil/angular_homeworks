@@ -1,3 +1,4 @@
+import { ControllerClasses } from "./../controller-classes";
 import { UserService } from "./../user.service";
 import { GameControlService } from "./../game-control.service";
 import { GameState } from "./../game-state";
@@ -54,7 +55,7 @@ export class ClickerComponent implements OnInit {
       }
     }
   }
-  getControllerClasses() {
+  getControllerClasses(): ControllerClasses {
     return {
       "clicker__controller--size-default": this.controlerSize.start,
       "clicker__controller--size-30": this.controlerSize.upper,
