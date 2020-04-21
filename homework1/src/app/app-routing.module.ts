@@ -1,11 +1,20 @@
-import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { FinishGameComponent } from "./finish-game/finish-game.component";
+import { StartComponent } from "./start/start.component";
+import { NgModule } from "@angular/core";
+import { Routes, RouterModule } from "@angular/router";
+import { ClickerComponent } from "./clicker/clicker.component";
 
-
-const routes: Routes = [];
+const routes: Routes = [
+  { path: "", component: StartComponent },
+  { path: "play", component: ClickerComponent },
+  {
+    path: "finish",
+    component: FinishGameComponent,
+  },
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
