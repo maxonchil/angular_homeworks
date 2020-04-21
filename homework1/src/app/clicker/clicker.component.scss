@@ -1,12 +1,13 @@
-$main-blue: rgb(14, 224, 210);
+@import "../../styles.scss";
 
 .clicker__controller {
   display: block;
   margin: 0 auto;
   border-radius: 100%;
-  background-color: $main-blue;
+  background-color: $main-red;
   cursor: pointer;
-  transition: 1s;
+  width: 300px;
+  height: 300px;
 }
 
 .clicker__text {
@@ -16,7 +17,7 @@ $main-blue: rgb(14, 224, 210);
   text-transform: uppercase;
   font-weight: 700;
   padding: 50% 0;
-  border: 2px solid #fff;
+  border: 2px solid $main-white;
 }
 .clicker__text::selection {
   background: transparent;
@@ -35,44 +36,13 @@ $main-blue: rgb(14, 224, 210);
   font-size: 18px;
   font-weight: 700;
 }
-.clicker__controller--is-disabled {
-  display: none;
-}
-.clicker__username {
-  color: $main-blue;
-  font-weight: 700;
-}
-.clicker__result {
-  border: 2px solid #000;
-  text-align: center;
-  font-size: 22px;
-  margin: 20px auto;
-  width: 50%;
-}
-.clicker__button {
-  text-transform: uppercase;
-  text-align: center;
-  font-weight: 700;
-  margin: 10px;
-  width: 115px;
-}
-.clicker__controller--size-default {
-  width: 200px;
-  height: 200px;
-}
-.clicker__controller--size-30 {
-  width: 250px;
-  height: 250px;
-}
-.clicker__controller--size-60 {
+.clicker__controller--is-green {
+  display: block;
+  margin: 0 auto;
+  border-radius: 100%;
+  background-color: $main-green;
+  cursor: pointer;
   width: 300px;
   height: 300px;
-}
-.clicker__controller--size-90 {
-  width: 350px;
-  height: 350px;
-}
-.clicker__controller--size-120 {
-  width: 400px;
-  height: 400px;
+  background-color: $main-green;
 }
