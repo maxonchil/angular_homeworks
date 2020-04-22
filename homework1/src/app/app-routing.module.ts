@@ -1,12 +1,15 @@
 import { NotFoundComponent } from "./not-found/not-found.component";
 import { FinishGameComponent } from "./finish-game/finish-game.component";
-import { StartComponent } from "./start/start.component";
 import { NgModule } from "@angular/core";
 import { Routes, RouterModule } from "@angular/router";
 import { ClickerComponent } from "./clicker/clicker.component";
 
 const routes: Routes = [
-  { path: "", component: StartComponent },
+  {
+    path: "",
+    loadChildren: () =>
+      import("./pages/pages.module").then((mod) => mod.PagesModule),
+  },
   { path: "play", component: ClickerComponent },
   {
     path: "finish",
