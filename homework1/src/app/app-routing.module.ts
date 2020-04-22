@@ -1,3 +1,4 @@
+import { NotFoundComponent } from "./not-found/not-found.component";
 import { FinishGameComponent } from "./finish-game/finish-game.component";
 import { StartComponent } from "./start/start.component";
 import { NgModule } from "@angular/core";
@@ -11,6 +12,7 @@ const routes: Routes = [
     path: "finish",
     component: FinishGameComponent,
   },
+  { path: "**", component: NotFoundComponent },
 ];
 
 @NgModule({

@@ -9,20 +9,23 @@ import { Router } from "@angular/router";
 })
 export class StartComponent implements OnInit {
   constructor(
-    private _router: Router,
-    private _gameConfigService: GameConfigService
+    private router: Router,
+    private gameConfigService: GameConfigService
   ) {}
 
   ngOnInit(): void {}
-  
-  getUserName(name: string): void {
-    const userName = name || "Anonymous";
-    this._gameConfigService.setUserName(userName);
-    this._router.navigate(["/play"]);
+
+  public getUserName(name: string): void {
+    this.saveUserName(name || "Anonymous");
   }
-  onKeydownEnter(event: KeyboardEvent): void {
-    const name = (<HTMLInputElement>event.target).value || "Anonymous";
-    this._gameConfigService.setUserName(name);
-    this._router.navigate(["/play"]);
+
+  public onKeydownEnter(event: KeyboardEvent): void {
+    const name = (event.target as HTMLInputElement).value || "Anonymous";
+    this.saveUserName(name);
+  }
+
+  private saveUserName(name: string): void {
+    this.gameConfigService.setUserName(name);
+    this.router.navigate(["/play"]);
   }
 }

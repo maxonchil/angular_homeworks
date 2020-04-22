@@ -5,7 +5,7 @@
   <label class="main__label">
     Plase enter your name:
     <input
-      #input
+      #userName
       class="main__input"
       type="text"
       placeholder="Maksym"
@@ -13,7 +13,7 @@
       (keydown.enter)="onKeydownEnter($event)"
     />
     <button
-      (click)="getUserName(input.value)"
+      (click)="getUserName(userName.value)"
       class="main__button button"
       type="button"
     >
