@@ -1,26 +1,23 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { BrowserModule } from "@angular/platform-browser";
+import { NgModule } from "@angular/core";
 
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { ClickerComponent } from './clicker/clicker.component';
-import { HighScoresComponent } from './highscores/highscores.component';
-import { StartComponent } from './start/start.component';
-import { FinishGameComponent } from './finish-game/finish-game.component';
+import { AppRoutingModule } from "./app-routing.module";
+import { AppComponent } from "./app.component";
+import { ClickerComponent } from "./clicker/clicker.component";
+import { StartComponent } from "./start/start.component";
+import { FinishGameComponent } from "./finish-game/finish-game.component";
+import { NotFoundComponent } from "./not-found/not-found.component";
 
 @NgModule({
   declarations: [
     AppComponent,
     ClickerComponent,
-    HighScoresComponent,
     StartComponent,
     FinishGameComponent,
+    NotFoundComponent,
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule
-  ],
+  imports: [BrowserModule, AppRoutingModule],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

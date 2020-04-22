@@ -11,12 +11,11 @@ export class HighScoresService {
     this.highScores = JSON.parse(localStorage.getItem("highScores")) || [];
   }
 
-  setScore(score: Score) {
+  public setScore(score: Score) {
     this.highScores.push(score);
     localStorage.setItem("highScores", JSON.stringify(this.highScores));
   }
-  getScores(): Score[] {
+  public getScores(): Score[] {
     return this.highScores.sort((a: Score, b: Score) => b.clicks - a.clicks);
   }
-  
 }

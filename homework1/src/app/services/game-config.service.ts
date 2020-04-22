@@ -8,39 +8,35 @@ import { Injectable } from "@angular/core";
   providedIn: "root",
 })
 export class GameConfigService {
-  private gameOptions: GameOptions;
+  private gameOptions: GameOptions = {
+    timer: 10,
+    totalClicks: 0,
+    gameState: false,
+    clickerStatus: GameStatuses.disabled
+  };
 
-  constructor(private _highScoresService: HighScoresService) {
-    this.gameOptions = {
-      timer: 10,
-      totalClicks: 0,
-      gameState: false,
-      clickerStatus: GameStatuses.disabled,
-    };
-  }
+  constructor(private highScoresService: HighScoresService) {}
 
-  startGame(): void {
+  public startGame(): void {
     this.gameOptions.gameState = true;
     this.gameOptions.clickerStatus = GameStatuses.active;
   }
-  finishGame(score: Score): void {
+  public finishGame(score: Score): void {
     this.gameOptions.gameState = false;
-    this.gameOptions.timer = 10;
-    this.gameOptions.totalClicks = 0;
     this.gameOptions.clickerStatus = GameStatuses.disabled;
-    this._highScoresService.setScore(score);
+    this.highScoresService.setScore(score);
   }
-  setUserName(name: string): void {
+  public setUserName(name: string): void {
     this.gameOptions.userName = name;
   }
-  setTotalClicks(clicks: number): void {
+  public setTotalClicks(clicks: number): void {
     this.gameOptions.totalClicks = clicks;
   }
-  playAgain(): void {
+  public playAgain(): void {
     this.gameOptions.timer = 10;
     this.gameOptions.totalClicks = 0;
   }
-  getGameOptions(): GameOptions {
+  public getGameOptions(): GameOptions {
     return this.gameOptions;
   }
 }
