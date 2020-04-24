@@ -1,23 +1,25 @@
+
 import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { ClickerComponent } from "./clicker.component";
+import { FinishGameComponent } from "./finish-game.component";
 
-describe("ClickerComponent", () => {
-  let component: ClickerComponent;
-  let fixture: ComponentFixture<ClickerComponent>;
+describe("FinishGameComponent", () => {
+  let component: FinishGameComponent;
+  let fixture: ComponentFixture<FinishGameComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ClickerComponent ]
+      declarations: [ FinishGameComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ClickerComponent);
+    fixture = TestBed.createComponent(FinishGameComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
+
 
   it("should create", () => {
     expect(component).toBeTruthy();

@@ -1,0 +1,31 @@
+
+@import "../../styles.scss";
+.main {
+  max-width: 1170px;
+  margin: 0 auto;
+  &__title {
+    text-align: center;
+  }
+  &__span {
+    color: $main-blue;
+  }
+  &__label {
+    display: flex;
+    flex-direction: column;
+    font-weight: 700;
+    width: 200px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  &__input {
+    margin: 10px 0;
+  }
+  &__button {
+    text-align: center;
+    text-transform: uppercase;
+    width: 80px;
+    margin: 10px auto;
+    font-weight: 600;
+    cursor: pointer;
+  }
+}
