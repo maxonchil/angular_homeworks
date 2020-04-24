@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ClickerComponent } from './clicker.component';
+import { PlayAgainComponent } from './play-again.component';
 
-describe('ClickerComponent', () => {
-  let component: ClickerComponent;
-  let fixture: ComponentFixture<ClickerComponent>;
+describe('PlayAgainComponent', () => {
+  let component: PlayAgainComponent;
+  let fixture: ComponentFixture<PlayAgainComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ClickerComponent ]
+      declarations: [ PlayAgainComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ClickerComponent);
+    fixture = TestBed.createComponent(PlayAgainComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

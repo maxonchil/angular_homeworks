@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ClickerComponent } from './clicker.component';
+import { HighscoresComponent } from './highscores.component';
 
-describe('ClickerComponent', () => {
-  let component: ClickerComponent;
-  let fixture: ComponentFixture<ClickerComponent>;
+describe('HighscoresComponent', () => {
+  let component: HighscoresComponent;
+  let fixture: ComponentFixture<HighscoresComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ClickerComponent ]
+      declarations: [ HighscoresComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ClickerComponent);
+    fixture = TestBed.createComponent(HighscoresComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
