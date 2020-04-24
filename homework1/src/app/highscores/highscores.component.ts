@@ -1,21 +1,20 @@
-import { Score } from "./../interfaces/score";
-import { HighScoresService } from "../services/highscores.service";
+import { HighscoresService } from "./../highscores.service";
 import { Component, OnInit } from "@angular/core";
 @Component({
   selector: "app-highscores",
   templateUrl: "./highscores.component.html",
   styleUrls: ["./highscores.component.scss"],
 })
-export class HighScoresComponent implements OnInit {
-  public showScores = false;
-  public highScores: Score[];
+export class HighscoresComponent implements OnInit {
+  public showScores: boolean = false;
+  public hightscores: object[];
 
-  constructor(public highScoresService: HighScoresService) {}
+  constructor(public _highscoresService: HighscoresService) {}
 
   ngOnInit(): void {}
 
   getAllScores(): void {
     this.showScores = !this.showScores;
-    this.highScores = this.highScoresService.getScores();
+    this.hightscores = this._highscoresService.getScores();
   }
 }
