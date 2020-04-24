@@ -1,0 +1,39 @@
+<div class="finish">
+  <div class="finish__message" *ngIf="gameOptions.userName">
+    <span class="finish__username">{{ gameOptions.userName }}</span
+    >, you clicked
+    <span class="finish__span">{{ gameOptions.totalClicks }} times </span>for 10
+    second!
+  </div>
+</div>
+<div class="finish__buttons">
+  <button
+    class="finish__highscores button"
+    (click)="getAllScores()"
+    type="button"
+  >
+    Highscores
+  </button>
+  <button class="finish__playagain button" (click)="playAgain()" type="button">
+    play again
+  </button>
+</div>
+<div *ngIf="showScores" class="finish__highscores highscores">
+  <ul class="highscores__list">
+    <li class="highscores__lt">
+      <div class="highscores__head highscores__rating">Rating</div>
+      <div class="highscores__head highscores__clicks">Clicks</div>
+      <div class="highscores__head highscores__name">Name</div>
+      <div class="highscores__head highscores__date">Date</div>
+    </li>
+    <li
+      class="highscores__item"
+      *ngFor="let score of highScores; index as index"
+    >
+      <div class="highscores__rating">{{ index + 1 }}</div>
+      <div class="highscores__clicks">{{ score.clicks }}</div>
+      <div class="highscores__name">{{ score.name }}</div>
+      <div class="highscores__date">{{ score.date }}</div>
+    </li>
+  </ul>
+</div>

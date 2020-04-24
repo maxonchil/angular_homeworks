@@ -1,0 +1,17 @@
+<div class="clicker">
+  <div class="clicker__total">
+    <span class="clicker__span">Total clicls:</span>
+    {{ gameOptions.totalClicks }}
+  </div>
+  <div
+    [ngClass]="getClickerClasses()"
+    class="clicker__controller"
+    (click)="onControllerClick()"
+  >
+    <span class="clicker__text">{{ gameOptions.clickerStatus }}</span>
+  </div>
+
+  <div class="clicker__timer">
+    <span class="clicker__span">Times left:</span> {{ gameOptions.timer }} sec.
+  </div>
+</div>
