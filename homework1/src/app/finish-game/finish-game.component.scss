@@ -54,16 +54,16 @@
     padding: 5px;
   }
   &__rating {
-    background-color: rgb(37, 196, 214);
+    background-color: $blue-dark1;
   }
   &__clicks {
-    background-color: rgb(53, 213, 231);
+    background-color: $blue-dark2;
   }
   &__name {
-    background-color: rgb(85, 226, 241);
+    background-color: $blue-light1;
   }
   &__date {
-    background-color: rgb(166, 243, 252);
+    background-color: $blue-light2;
   }
   &__date,
   &__name,
