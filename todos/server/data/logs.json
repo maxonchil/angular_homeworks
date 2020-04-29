@@ -1,0 +1,10 @@
+{
+  "SUCCESS_LOG": {
+    "DEFATUL": "Success request",
+    "UPDATED": "Updated!",
+    "ADDED": "Added!",
+    "SAVED": "Saved!",
+    "DELETED": "Deleted!",
+    "SENDED": "Sended!"
+  }
+}

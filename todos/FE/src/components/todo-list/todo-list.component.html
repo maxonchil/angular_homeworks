@@ -1,0 +1,56 @@
+<div class="todo">
+  <div class="todo__controllers">
+    <mat-form-field class="todo__form-field">
+      <mat-label>Search by word</mat-label>
+      <input
+        #searchInput
+        class="todo__search-field"
+        matInput
+        placeholder="e.g: Meeting, Natalia"
+      />
+    </mat-form-field>
+  </div>
+  <div *ngIf="searchNotFound" class="todo__not-found">
+    No match...
+  </div>
+  <ul class="todo__list">
+    <li *ngFor="let todo of todoList; let i = index" class="todo__item">
+      <mat-icon class="todo__edit button" (click)="editTodo(todo)"
+        >edit</mat-icon
+      >
+      <div
+        *ngIf="editTodoID !== todo._id"
+        [ngClass]="{
+          todo__title: true,
+          'todo__title--is-done': todo.completed
+        }"
+      >
+        {{ todo.title }}
+      </div>
+      <textarea
+        class="todo__text-area"
+        matInput
+        *ngIf="editTodoID === todo._id"
+        [(ngModel)]="todo.title"
+      ></textarea>
+      <div class="todo__footer">
+        <mat-checkbox
+          class="todo__complete"
+          [(ngModel)]="todo.completed"
+          labelPosition="after"
+          ><span class="todo__status">{{
+            (todo.completed && "Done") || "In progress"
+          }}</span></mat-checkbox
+        >
+        <button
+          (click)="deleteTodo(todo)"
+          class="todo__delete button"
+          type="button"
+        >
+          Delete
+        </button>
+        <mat-icon class="todo__save" (click)="updateTodo(todo)">save</mat-icon>
+      </div>
+    </li>
+  </ul>
+</div>
