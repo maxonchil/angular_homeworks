@@ -15,7 +15,6 @@ export class TodoListComponent implements OnInit, AfterViewInit, OnDestroy {
   @ViewChild('searchInput') searchInput: ElementRef;
 
   public todoList: Todo[] = [];
-  public searchNotFound: boolean;
   public editTodoID: string;
   public todoListBackup: Todo[];
   private search$: Subscription;
@@ -38,15 +37,13 @@ export class TodoListComponent implements OnInit, AfterViewInit, OnDestroy {
         const value = (event.target as HTMLInputElement).value;
 
         if (!value) {
-          this.searchNotFound = false;
           this.todoList = this.todoListBackup;
           return;
         }
         this.todoList = this.todoListBackup.filter((todo: Todo) => todo.title.includes(value));
-        this.searchNotFound = false;
 
         if (!this.todoList.length) {
-          this.searchNotFound = true;
+          this.snackBar.open('Not found', 'Undo', { duration: 2000 });
         }
       });
   }
@@ -64,10 +61,10 @@ export class TodoListComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   public editTodo(todo: Todo): void {
-    this.editTodoID === undefined ?
-      this.editTodoID = todo._id
-      :
-      this.editTodoID = undefined;
+    if (!this.editTodoID) {
+      this.editTodoID = todo._id;
+    }
+    this.editTodoID = undefined;
   }
 
   public updateTodo(todo: Todo): void {
@@ -78,4 +75,5 @@ export class TodoListComponent implements OnInit, AfterViewInit, OnDestroy {
       this.editTodoID = undefined;
     });
   }
+
 }

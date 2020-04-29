@@ -10,9 +10,6 @@
       />
     </mat-form-field>
   </div>
-  <div *ngIf="searchNotFound" class="todo__not-found">
-    No match...
-  </div>
   <ul class="todo__list">
     <li *ngFor="let todo of todoList; let i = index" class="todo__item">
       <mat-icon class="todo__edit button" (click)="editTodo(todo)"
@@ -49,7 +46,12 @@
         >
           Delete
         </button>
-        <mat-icon class="todo__save" (click)="updateTodo(todo)">save</mat-icon>
+        <button
+          class="todo__save button"
+          (click)="updateTodo(todo)"
+        >
+          <mat-icon class="todo__save">save</mat-icon>
+        </button>
       </div>
     </li>
   </ul>
