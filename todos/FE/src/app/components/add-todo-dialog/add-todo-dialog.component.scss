@@ -7,6 +7,9 @@
     display: flex;
     flex-direction: column;
   }
+  &__form-field {
+    margin: 10px 0;
+  }
   &__footer {
     display: flex;
     justify-content: space-around;

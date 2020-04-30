@@ -3,7 +3,7 @@ export interface Todo {
   created_by?: number;
   title: string;
   completed: boolean;
-  date: Date;
+  date: string;
   time: string;
   priority: string;
 }

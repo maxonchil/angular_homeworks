@@ -24,4 +24,8 @@ export class DataService {
     return this.http.put<TodoResponse>(`${env.apiURL}/todos/update${todo._id}`, { title: todo.title, completed: todo.completed });
   }
 
+  public addTodo(todo: Todo): Observable<TodoResponse> {
+    return this.http.post<TodoResponse>(`${env.apiURL}/todos/add`, { todo });
+  }
+
 }

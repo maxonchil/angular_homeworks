@@ -1,3 +1,4 @@
+import { DataService } from './../../services/data.service';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 
@@ -5,20 +6,20 @@ import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms'
 @Component({
   selector: 'app-add-todo-dialog',
   templateUrl: './add-todo-dialog.component.html',
-  styleUrls: ['./add-todo-dialog.component.scss']
+  styleUrls: ['./add-todo-dialog.component.scss'],
+
 })
 export class AddTodoDialogComponent implements OnInit {
   public minDate = new Date();
   public todoForm: FormGroup;
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, private dataService: DataService) {
 
   }
 
   ngOnInit(): void {
     this.todoForm = this.fb.group({
       title: ['', [Validators.minLength(2), Validators.required]],
-      completed: [false],
       date: [this.minDate, [this.dateValidator, Validators.required]],
       time: ['', [Validators.required]],
       priority: ['', Validators.required],
@@ -31,14 +32,14 @@ export class AddTodoDialogComponent implements OnInit {
       return false;
     }
     const validate = date.toLocaleDateString()
-      .match(/\d{1,2}\/\d{1,2}\/\d{4}/);
+      .match(/\d{1,2}\.\d{1,2}\.\d{4}/);
     if (!validate) {
       return false;
     }
     return true;
   }
 
-  public checkForError(control, errorType: string): boolean {
+  public checkForError(control: string, errorType: string): boolean {
     if (this.todoForm.controls[control].errors?.[errorType] &&
       this.todoForm.controls[control].touched) {
       return true;
@@ -46,4 +47,14 @@ export class AddTodoDialogComponent implements OnInit {
     return false;
   }
 
+  public createNewTodo(): void {
+    const todo = {
+      title: this.todoForm.get('title').value,
+      completed: false,
+      date: (this.todoForm.get('date').value as Date).toLocaleDateString(),
+      time: this.todoForm.get('time').value,
+      priority: this.todoForm.get('priority').value,
+    }
+    this.dataService.addTodo(todo).subscribe(console.log);
+  }
 }
