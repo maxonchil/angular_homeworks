@@ -51,10 +51,6 @@ export class TodoListComponent implements OnInit, AfterViewInit, OnDestroy {
       });
   }
 
-  ngOnDestroy() {
-    this.search$.unsubscribe();
-  }
-
   public deleteTodo(todo: Todo): void {
     this.dataService.deleteTodo(todo).subscribe(({ data, message }) => {
       this.todoList = data.todos;
@@ -87,5 +83,9 @@ export class TodoListComponent implements OnInit, AfterViewInit, OnDestroy {
   }
   public addTodo(): void {
     this.dialog.open(AddTodoDialogComponent);
+  }
+
+  ngOnDestroy() {
+    this.search$.unsubscribe();
   }
 }

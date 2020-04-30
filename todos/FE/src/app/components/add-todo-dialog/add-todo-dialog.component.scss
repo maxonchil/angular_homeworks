@@ -1,5 +1,8 @@
 @import "../../../styles.scss";
 .dialog {
+  &__title {
+    text-align: center;
+  }
   &__form {
     display: flex;
     flex-direction: column;
