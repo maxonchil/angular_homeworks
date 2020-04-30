@@ -32,6 +32,7 @@
       ></textarea>
       <div class="todo__footer">
         <mat-checkbox
+          (click)="completeTodo(todo)"
           class="todo__complete"
           [(ngModel)]="todo.completed"
           labelPosition="after"
@@ -49,6 +50,7 @@
         <button
           class="todo__save button"
           (click)="updateTodo(todo)"
+          [disabled]="updatedTodo !== todo._id"
         >
           <mat-icon class="todo__save">save</mat-icon>
         </button>

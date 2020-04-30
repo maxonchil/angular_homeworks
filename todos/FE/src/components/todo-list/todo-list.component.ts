@@ -16,6 +16,7 @@ export class TodoListComponent implements OnInit, AfterViewInit, OnDestroy {
 
   public todoList: Todo[] = [];
   public editTodoID: string;
+  public updatedTodo: string;
   public todoListBackup: Todo[];
   private search$: Subscription;
 
@@ -63,8 +64,14 @@ export class TodoListComponent implements OnInit, AfterViewInit, OnDestroy {
   public editTodo(todo: Todo): void {
     if (!this.editTodoID) {
       this.editTodoID = todo._id;
+      this.updatedTodo = todo._id;
+      return;
     }
     this.editTodoID = undefined;
+  }
+
+  public completeTodo(todo: Todo): void {
+    this.updatedTodo = todo._id;
   }
 
   public updateTodo(todo: Todo): void {
@@ -72,6 +79,7 @@ export class TodoListComponent implements OnInit, AfterViewInit, OnDestroy {
       this.todoList = this.todoListBackup
         .map((curentTodo: Todo) => curentTodo._id === data.todo._id ? data.todo : curentTodo);
       this.snackBar.open(message, 'Undo', { duration: 2000 });
+      this.updatedTodo = undefined;
       this.editTodoID = undefined;
     });
   }
