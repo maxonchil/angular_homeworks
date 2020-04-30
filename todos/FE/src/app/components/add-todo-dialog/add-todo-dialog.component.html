@@ -1,0 +1,36 @@
+<div class="dialog">
+  <h2 class="dialog__title">Add new todo</h2>
+
+  <mat-dialog-content class="dialog__form">
+    <mat-form-field>
+      <mat-label>Todo title</mat-label>
+      <input
+        matNativeControl
+        placeholder="e.g: Meeting with Maria after work"
+      />
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Date</mat-label>
+      <input matInput [matDatepicker]="deadline" [min]="minDate" />
+      <mat-datepicker-toggle matSuffix [for]="deadline"></mat-datepicker-toggle>
+      <mat-datepicker #deadline></mat-datepicker>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Time</mat-label>
+      <input matInput type="time" value="12:00" />
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Priority</mat-label>
+      <mat-select>
+        <mat-option value="option">Light</mat-option>
+        <mat-option value="option">Medium</mat-option>
+        <mat-option value="option">Important</mat-option>
+        <mat-option value="option">Omae wa no shinderiu</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </mat-dialog-content>
+  <mat-dialog-actions class="dialog__footer">
+    <button mat-stroked-button class="dialog__close button">close</button>
+    <button mat-stroked-button class="dialog__submit button">submit</button>
+  </mat-dialog-actions>
+</div>

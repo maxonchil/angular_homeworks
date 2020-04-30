@@ -1,9 +1,11 @@
+import { AddTodoDialogComponent } from './../add-todo-dialog/add-todo-dialog.component';
+import { DataService } from './../../services/data.service';
+import { Todo } from './../../interfaces/todo';
 import { fromEvent, Subscription } from 'rxjs';
 import { debounceTime } from 'rxjs/operators';
-import { Todo } from '../../app/interfaces/todo';
-import { DataService } from '../../app/services/data.service';
 import { Component, OnInit, AfterViewInit, ViewChild, ElementRef, OnDestroy } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatDialog } from '@angular/material/dialog';
 
 
 @Component({
@@ -21,7 +23,7 @@ export class TodoListComponent implements OnInit, AfterViewInit, OnDestroy {
   private search$: Subscription;
 
 
-  constructor(private dataService: DataService, private snackBar: MatSnackBar) {
+  constructor(private dataService: DataService, private snackBar: MatSnackBar, private dialog: MatDialog) {
   }
 
   ngOnInit(): void {
@@ -83,5 +85,7 @@ export class TodoListComponent implements OnInit, AfterViewInit, OnDestroy {
       this.editTodoID = undefined;
     });
   }
-
+  public addTodo(): void {
+    this.dialog.open(AddTodoDialogComponent);
+  }
 }

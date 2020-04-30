@@ -9,6 +9,9 @@
         placeholder="e.g: Meeting, Natalia"
       />
     </mat-form-field>
+    <button (click)="addTodo()" class="todo__add" mat-mini-fab title="Add todo">
+      +
+    </button>
   </div>
   <ul class="todo__list">
     <li *ngFor="let todo of todoList; let i = index" class="todo__item">
@@ -41,13 +44,17 @@
           }}</span></mat-checkbox
         >
         <button
+          mat-icon-button
           (click)="deleteTodo(todo)"
           class="todo__delete button"
           type="button"
+          title="Delete"
         >
-          Delete
+          <mat-icon>delete</mat-icon>
         </button>
         <button
+          mat-icon-button
+          title="Save"
           class="todo__save button"
           (click)="updateTodo(todo)"
           [disabled]="updatedTodo !== todo._id"

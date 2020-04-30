@@ -1,0 +1,14 @@
+@import "../../../styles.scss";
+.dialog {
+  &__form {
+    display: flex;
+    flex-direction: column;
+  }
+  &__footer {
+    display: flex;
+    justify-content: space-around;
+  }
+}
+.button {
+  @include button();
+}
