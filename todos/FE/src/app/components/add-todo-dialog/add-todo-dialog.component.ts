@@ -11,12 +11,11 @@ import { DataStoreService } from 'src/app/services/data-store.service';
 
 })
 export class AddTodoDialogComponent implements OnInit {
-
-  public minDate = new Date();
+  public minDate: Date;
   public todoForm: FormGroup;
 
-  constructor(private fb: FormBuilder, private dataStore: DataStoreService, private snackBar: MatSnackBar) {
-
+  constructor(private fb: FormBuilder, private dataStore: DataStoreService) {
+    this.minDate = new Date();
   }
 
   ngOnInit(): void {

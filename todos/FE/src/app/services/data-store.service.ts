@@ -67,7 +67,7 @@ export class DataStoreService implements OnDestroy {
         const result = this.todosBackup.filter((todo: Todo) => todo.title.includes(value));
         this.todos$.next(result);
 
-        if (!result) {
+        if (!result.length) {
           this.snackBar.open('Not found', 'Undo', { duration: 2000 });
         }
       });

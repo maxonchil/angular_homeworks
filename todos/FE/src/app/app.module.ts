@@ -20,6 +20,7 @@ import { AddTodoDialogComponent } from './components/add-todo-dialog/add-todo-di
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatSelectModule } from '@angular/material/select';
 import { MatNativeDateModule } from '@angular/material/core';
+import { TodoItemComponent } from './components/todo-item/todo-item.component';
 
 
 @NgModule({
@@ -27,6 +28,7 @@ import { MatNativeDateModule } from '@angular/material/core';
     AppComponent,
     TodoListComponent,
     AddTodoDialogComponent,
+    TodoItemComponent,
   ],
   imports: [
     BrowserModule,
@@ -44,7 +46,7 @@ import { MatNativeDateModule } from '@angular/material/core';
     MatDialogModule,
     MatDatepickerModule,
     MatSelectModule,
-    MatNativeDateModule
+    MatNativeDateModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

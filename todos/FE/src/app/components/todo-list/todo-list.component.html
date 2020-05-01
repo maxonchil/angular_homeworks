@@ -1,14 +1,28 @@
 <div class="todo">
   <div class="todo__controllers">
-    <mat-form-field class="todo__form-field">
-      <mat-label>Search by word</mat-label>
-      <input
-        #searchInput
-        class="todo__search-field"
-        matInput
-        placeholder="e.g: Meeting, Natalia"
-      />
-    </mat-form-field>
+    <div class="todo__inputs">
+      <mat-form-field class="todo__form-field">
+        <mat-label>Search by word</mat-label>
+        <input
+          #searchInput
+          class="todo__search-field"
+          matInput
+          placeholder="e.g: Meeting, Natalia"
+        />
+      </mat-form-field>
+      <div class="todo__filter">
+        <mat-form-field>
+          <mat-label>Filter note</mat-label>
+          <mat-select>
+            <mat-option value="deadline">Deadline</mat-option>
+            <mat-option value="priority">Priority</mat-option>
+            <mat-option value="done">Done</mat-option>
+            <mat-option value="in_progress">In progress</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <button mat-icon-button><mat-icon>sort</mat-icon></button>
+      </div>
+    </div>
     <button (click)="addTodo()" class="todo__add" mat-mini-fab title="Add todo">
       +
     </button>
@@ -18,53 +32,7 @@
       *ngFor="let todo of dataStore.todos$ | async; let i = index"
       class="todo__item"
     >
-      <mat-icon class="todo__edit button" (click)="editTodo(todo)"
-        >edit</mat-icon
-      >
-      <div
-        *ngIf="editTodoID !== todo._id"
-        [ngClass]="{
-          todo__title: true,
-          'todo__title--is-done': todo.completed
-        }"
-      >
-        {{ todo.title }}
-      </div>
-      <textarea
-        class="todo__text-area"
-        matInput
-        *ngIf="editTodoID === todo._id"
-        [(ngModel)]="todo.title"
-      ></textarea>
-      <div class="todo__footer">
-        <mat-checkbox
-          (click)="completeTodo(todo)"
-          class="todo__complete"
-          [(ngModel)]="todo.completed"
-          labelPosition="after"
-          ><span class="todo__status">{{
-            (todo.completed && "Done") || "In progress"
-          }}</span></mat-checkbox
-        >
-        <button
-          mat-icon-button
-          (click)="deleteTodo(todo)"
-          class="todo__delete button"
-          type="button"
-          title="Delete"
-        >
-          <mat-icon>delete</mat-icon>
-        </button>
-        <button
-          mat-icon-button
-          title="Save"
-          class="todo__save button"
-          (click)="updateTodo(todo)"
-          [disabled]="updatedTodo !== todo._id"
-        >
-          <mat-icon class="todo__save">save</mat-icon>
-        </button>
-      </div>
+      <app-todo-item [todo]="todo"></app-todo-item>
     </li>
   </ul>
 </div>
