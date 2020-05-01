@@ -1,6 +1,7 @@
-import { DataService } from './../../services/data.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
+import { DataStoreService } from 'src/app/services/data-store.service';
 
 
 @Component({
@@ -10,10 +11,11 @@ import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms'
 
 })
 export class AddTodoDialogComponent implements OnInit {
+
   public minDate = new Date();
   public todoForm: FormGroup;
 
-  constructor(private fb: FormBuilder, private dataService: DataService) {
+  constructor(private fb: FormBuilder, private dataStore: DataStoreService, private snackBar: MatSnackBar) {
 
   }
 
@@ -24,19 +26,6 @@ export class AddTodoDialogComponent implements OnInit {
       time: ['', [Validators.required]],
       priority: ['', Validators.required],
     });
-  }
-
-  private dateValidator(control: FormControl): boolean {
-    const date = (control.value as Date);
-    if (!date) {
-      return false;
-    }
-    const validate = date.toLocaleDateString()
-      .match(/\d{1,2}\.\d{1,2}\.\d{4}/);
-    if (!validate) {
-      return false;
-    }
-    return true;
   }
 
   public checkForError(control: string, errorType: string): boolean {
@@ -55,6 +44,20 @@ export class AddTodoDialogComponent implements OnInit {
       time: this.todoForm.get('time').value,
       priority: this.todoForm.get('priority').value,
     }
-    this.dataService.addTodo(todo).subscribe(console.log);
+    this.dataStore.addTodo(todo);
+  }
+
+
+  private dateValidator(control: FormControl): boolean {
+    const date = (control.value as Date);
+    if (!date) {
+      return false;
+    }
+    const validate = date.toLocaleDateString()
+      .match(/\d{1,2}\.\d{1,2}\.\d{4}/);
+    if (!validate) {
+      return false;
+    }
+    return true;
   }
 }

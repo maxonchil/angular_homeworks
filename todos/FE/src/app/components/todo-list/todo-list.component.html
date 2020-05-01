@@ -14,7 +14,10 @@
     </button>
   </div>
   <ul class="todo__list">
-    <li *ngFor="let todo of todoList; let i = index" class="todo__item">
+    <li
+      *ngFor="let todo of dataStore.todos$ | async; let i = index"
+      class="todo__item"
+    >
       <mat-icon class="todo__edit button" (click)="editTodo(todo)"
         >edit</mat-icon
       >

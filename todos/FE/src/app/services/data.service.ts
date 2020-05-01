@@ -10,21 +10,22 @@ import { Observable } from 'rxjs';
 })
 export class DataService {
 
+
   constructor(private http: HttpClient) {
   }
 
-  public getTodos(): Observable<TodoResponse> {
+  public getTodosRequest(): Observable<TodoResponse> {
     return this.http.get<TodoResponse>(`${env.apiURL}/todos/getAll`);
   }
 
-  public deleteTodo(todo: Todo): Observable<TodoResponse> {
+  public deleteTodoRequest(todo: Todo): Observable<TodoResponse> {
     return this.http.delete<TodoResponse>(`${env.apiURL}/todos/delete${todo._id}`);
   }
-  public updateTodo(todo: Todo): Observable<TodoResponse> {
+  public updateTodoRequest(todo: Todo): Observable<TodoResponse> {
     return this.http.put<TodoResponse>(`${env.apiURL}/todos/update${todo._id}`, { title: todo.title, completed: todo.completed });
   }
 
-  public addTodo(todo: Todo): Observable<TodoResponse> {
+  public addTodoRequest(todo: Todo): Observable<TodoResponse> {
     return this.http.post<TodoResponse>(`${env.apiURL}/todos/add`, { todo });
   }
 
