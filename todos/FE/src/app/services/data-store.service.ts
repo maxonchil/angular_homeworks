@@ -1,9 +1,10 @@
+
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { debounceTime, takeUntil } from 'rxjs/operators';
+import { takeUntil } from 'rxjs/operators';
 import { Todo } from './../interfaces/todo';
 import { DataService } from './data.service';
 import { Injectable, OnDestroy } from '@angular/core';
-import { Subject, fromEvent } from 'rxjs';
+import { Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -54,24 +55,6 @@ export class DataStoreService implements OnDestroy {
       });
   }
 
-  public searchByWord(element: HTMLInputElement) {
-    fromEvent(element, 'input')
-      .pipe(debounceTime(500), takeUntil(this.notifier))
-      .subscribe((event: InputEvent) => {
-        const value = (event.target as HTMLInputElement).value;
-
-        if (!value) {
-          this.todos$.next(this.todosBackup);
-        }
-
-        const result = this.todosBackup.filter((todo: Todo) => todo.title.includes(value));
-        this.todos$.next(result);
-
-        if (!result.length) {
-          this.snackBar.open('Not found', 'Undo', { duration: 2000 });
-        }
-      });
-  }
 
   ngOnDestroy(): void {
     this.notifier.next();

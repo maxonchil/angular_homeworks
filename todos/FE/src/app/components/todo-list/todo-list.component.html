@@ -13,14 +13,17 @@
       <div class="todo__filter">
         <mat-form-field>
           <mat-label>Filter note</mat-label>
-          <mat-select>
-            <mat-option value="deadline">Deadline</mat-option>
-            <mat-option value="priority">Priority</mat-option>
+          <mat-select
+            (selectionChange)="dataProcessing.todoFilter($event.value)"
+          >
+            <mat-option value="deadline_comming">Deadline coomming</mat-option>
+            <mat-option value="deadline_latest">Deadline latest</mat-option>
+            <mat-option value="priority_high">Priority high to low</mat-option>
+            <mat-option value="priority_low">Priority low to high</mat-option>
             <mat-option value="done">Done</mat-option>
             <mat-option value="in_progress">In progress</mat-option>
           </mat-select>
         </mat-form-field>
-        <button mat-icon-button><mat-icon>sort</mat-icon></button>
       </div>
     </div>
     <button (click)="addTodo()" class="todo__add" mat-mini-fab title="Add todo">

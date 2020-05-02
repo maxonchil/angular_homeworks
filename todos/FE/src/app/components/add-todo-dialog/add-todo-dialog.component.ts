@@ -1,4 +1,4 @@
-import { MatSnackBar } from '@angular/material/snack-bar';
+import { TodoPriorities } from 'src/app/enums/todo-priorities.enum';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 import { DataStoreService } from 'src/app/services/data-store.service';
@@ -13,9 +13,11 @@ import { DataStoreService } from 'src/app/services/data-store.service';
 export class AddTodoDialogComponent implements OnInit {
   public minDate: Date;
   public todoForm: FormGroup;
+  public priorities: typeof TodoPriorities;
 
   constructor(private fb: FormBuilder, private dataStore: DataStoreService) {
     this.minDate = new Date();
+    this.priorities = TodoPriorities;
   }
 
   ngOnInit(): void {

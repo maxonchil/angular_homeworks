@@ -63,12 +63,10 @@
     <mat-form-field class="dialog__form-field">
       <mat-label>Priority</mat-label>
       <mat-select required formControlName="priority">
-        <mat-option value="light">Light</mat-option>
-        <mat-option value="medium">Medium</mat-option>
-        <mat-option value="important">Important</mat-option>
-        <mat-option value="omae_wa_no_shinderiu"
-          >Omae wa no shinderiu</mat-option
-        >
+        <mat-option [value]="priorities[0]">Light</mat-option>
+        <mat-option [value]="priorities[1]">Medium</mat-option>
+        <mat-option [value]="priorities[2]">Important</mat-option>
+        <mat-option [value]="priorities[3]">Omae wa no shinderiu</mat-option>
       </mat-select>
       <mat-hint
         id="mat-hint"

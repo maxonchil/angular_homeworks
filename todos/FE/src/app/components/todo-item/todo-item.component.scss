@@ -39,6 +39,10 @@
   &__text-area {
     resize: none;
   }
+  &__deadline {
+    font-size: 10px;
+    color: $deadline-color;
+  }
   &__save {
     cursor: pointer;
   }

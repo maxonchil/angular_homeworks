@@ -21,6 +21,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatSelectModule } from '@angular/material/select';
 import { MatNativeDateModule } from '@angular/material/core';
 import { TodoItemComponent } from './components/todo-item/todo-item.component';
+import { TimeFormat12hPipe } from './pipes/time-format12h.pipe';
 
 
 @NgModule({
@@ -29,6 +30,7 @@ import { TodoItemComponent } from './components/todo-item/todo-item.component';
     TodoListComponent,
     AddTodoDialogComponent,
     TodoItemComponent,
+    TimeFormat12hPipe,
   ],
   imports: [
     BrowserModule,
@@ -46,7 +48,7 @@ import { TodoItemComponent } from './components/todo-item/todo-item.component';
     MatDialogModule,
     MatDatepickerModule,
     MatSelectModule,
-    MatNativeDateModule,
+    MatNativeDateModule
   ],
   providers: [],
   bootstrap: [AppComponent]

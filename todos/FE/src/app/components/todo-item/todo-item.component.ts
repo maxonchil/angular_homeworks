@@ -1,6 +1,7 @@
 import { DataStoreService } from 'src/app/services/data-store.service';
 import { Todo } from './../../interfaces/todo';
 import { Component, OnInit, Input } from '@angular/core';
+import { TodoPriorities } from 'src/app/enums/todo-priorities.enum';
 
 @Component({
   selector: 'app-todo-item',
@@ -40,5 +41,10 @@ export class TodoItemComponent implements OnInit {
   public updateTodo(todo: Todo): void {
     this.dataStore.updateTodo(todo);
     this.editTodoID = undefined;
+  }
+
+
+  public getPriority(key: string): string {
+    return TodoPriorities[key];
   }
 }

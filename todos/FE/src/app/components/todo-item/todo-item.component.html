@@ -13,6 +13,12 @@
     *ngIf="editTodoID === todo._id"
     [(ngModel)]="todo.title"
   ></textarea>
+  <div class="todo__deadline">
+    {{ todo.date | date: "mediumDate" }} {{ todo.time | timeFormat12h }}
+  </div>
+  <div class="todo__priority">
+    {{ todo.priority }}
+  </div>
   <div class="todo__footer">
     <mat-checkbox
       (click)="completeTodo(todo)"
