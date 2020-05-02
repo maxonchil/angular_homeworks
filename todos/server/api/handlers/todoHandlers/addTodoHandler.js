@@ -1,7 +1,7 @@
 const { Todo, todoValidationSchema } = require('../../../schemas/todo.schema');
 const errorHandler = require('../error.handler');
 const success = require('../../utilits/successResponse');
-const { SUCCESS_LOG } = require('../../../data/logs.json');
+const { SUCCESS_LOG, ERROR_LOG } = require('../../../data/logs.json');
 
 const addTodoHandler = (req, res) => {
   const { todo } = req.body;
@@ -9,8 +9,9 @@ const addTodoHandler = (req, res) => {
   const { value: ValidatedTodo, error } = todoValidationSchema.validate(todo);
 
   if (error) {
-    return errorHandler('Validation failed', res);
+    return errorHandler(ERROR_LOG.VALIDATION, res);
   }
+
   const newTodo = new Todo(ValidatedTodo);
 
   newTodo

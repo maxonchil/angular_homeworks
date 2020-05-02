@@ -6,5 +6,8 @@
     "SAVED": "Saved!",
     "DELETED": "Deleted!",
     "SENDED": "Sended!"
+  },
+  "ERROR_LOG": {
+    "VALIDATION": "Validation failed!"
   }
 }
