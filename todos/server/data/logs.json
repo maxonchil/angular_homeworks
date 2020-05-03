@@ -1,0 +1,13 @@
+{
+  "SUCCESS_LOG": {
+    "DEFATUL": "Success request",
+    "UPDATED": "Updated!",
+    "ADDED": "Added!",
+    "SAVED": "Saved!",
+    "DELETED": "Deleted!",
+    "SENDED": "Sended!"
+  },
+  "ERROR_LOG": {
+    "VALIDATION": "Validation failed!"
+  }
+}
