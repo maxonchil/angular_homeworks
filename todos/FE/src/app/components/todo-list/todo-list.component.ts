@@ -29,5 +29,4 @@ export class TodoListComponent implements OnInit, AfterViewInit {
   public addTodo(): void {
     this.dialog.open(AddTodoDialogComponent);
   }
-
 }

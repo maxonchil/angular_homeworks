@@ -24,6 +24,13 @@
             <mat-option value="in_progress">In progress</mat-option>
           </mat-select>
         </mat-form-field>
+        <button
+          [disabled]="!dataProcessing.wasFiltred"
+          (click)="dataProcessing.clearFilter()"
+          mat-icon-button
+        >
+          <mat-icon>refresh</mat-icon>
+        </button>
       </div>
     </div>
     <button (click)="addTodo()" class="todo__add" mat-mini-fab title="Add todo">
