@@ -3,23 +3,19 @@ const app = express();
 const cors = require('cors');
 const config = require('config');
 const todosRouter = require('./api/routing/todos.router');
-const mongoose = require('mongoose');
 const log4js = require('log4js');
 const logger = log4js.getLogger();
+const dbConnection = require('./api/utilits/dbConnection');
+const { ERROR_LOG } = require('./data/logs.json');
+const { level } = config.get('logger');
 
 const { port: serverPort } = config.get('webServer');
-const { protocol, host, port, name } = config.get('dataBase');
-const dbURL = `${protocol}://${host}:${port}/${name}`;
 
-logger.level = 'debug';
+logger.level = level;
 
-try {
-  mongoose.connect(dbURL, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  });
-} catch (error) {
-  return logger.error(error.message);
+const dbConnect = dbConnection();
+if (!dbConnect) {
+  return logger.error(ERROR_LOG.DB_CONNECTION);
 }
 
 app.use(express.json());

@@ -6,9 +6,12 @@
     "logsPath": "LOGS_PATH"
   },
   "dataBase": {
-    "protocol": "DB_PROTOCOL",
-    "host": "DB_HOST",
-    "port": "DB_PORT",
-    "name": "DB_NAME"
+    "name": "DB_NAME",
+    "username": "DB_USERNAME",
+    "password": "DB_PASSWORD",
+    "cluster": "DB_CLUSTER"
+  },
+  "logger": {
+    "level": "LOGER_LVL"
   }
 }

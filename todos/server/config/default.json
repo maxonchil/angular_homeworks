@@ -5,10 +5,14 @@
     "port": 8080,
     "logsPath": "data/requestLogs.json"
   },
+
   "dataBase": {
-    "protocol": "mongodb",
-    "host": "127.0.0.1",
-    "port": 30000,
-    "name": "semi-uber"
+    "username": "your_username",
+    "password": "your_password",
+    "name": "your_db_name",
+    "cluster": "your_cluster"
+  },
+  "logger": {
+    "level": "debug"
   }
 }
